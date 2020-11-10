@@ -43,7 +43,7 @@
                                 @endif
                         </div>
                         <div class="form-group">
-                            <a href="{{url('dashboard')}}" class="at-btn at-btn-lg at-btnlogin">Login</a>
+                            <button type="submit" class="at-btn at-btn-lg at-btnlogin">Login</button>
                         </div>
                         <div class="form-group">
                             <p>Don’t have an account? <a href="{{route('register')}}">Sign Up</a> </p>

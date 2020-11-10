@@ -3,11 +3,19 @@
     *************************************-->
 <header id="at-header" class="at-header">
     <strong class="at-logo">
-        <a href="dashboard.html">
+        @if(auth()->user()->isAdmin())
+        <a href="{{route('home.index')}}">
+            @elseif(auth()->user()->isOrganizer())
+                <a href="{{route('organization.index')}}">
+                    @elseif(auth()->user()->isFamilyAccountant())
+                        <a href="{{route('family.index')}}">
+                            @elseif(auth()->user()->isIndividualAccountant())
+                                <a href="{{route('individual.index')}}">
+            @endif
             <img src="{{asset('asset/images/logo.png')}}" alt="logo image">
         </a>
     </strong>
-    @if(\Illuminate\Support\Facades\Request::is('organization/home'))
+    @if(\Illuminate\Support\Facades\Request::is('superadmin/organization/dashboard'))
         <nav class="at-navigation">
             <ul>
                 <li class="at-active">
@@ -132,7 +140,7 @@
                 <figure class="at-userimg">
                     <img src="{{asset('asset/images/user.png')}}" alt="user image">
                 </figure>
-                <span>Eesa Stevenson</span>
+                <span>{{auth()->user()->name}}</span>
                 <i class="icon-droparow"></i>
             </a>
             <div class="dropdown-menu at-dropdownmenu" aria-labelledby="dropdownMenuLink">
@@ -144,7 +152,7 @@
                     <i class="icon-setting"></i>
                     Settings
                 </a>
-                <a class="dropdown-item" href="login.html">
+                <a class="dropdown-item" href="{{route('logout')}}">
                     <i class="icon-logout"></i>
                     Logout
                 </a>

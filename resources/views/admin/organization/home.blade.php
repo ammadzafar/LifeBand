@@ -13,28 +13,33 @@
                             <img src="{{asset('asset/images/alert.png')}}" alt="">
                         </figure>
                         <div class="at-alercontent">
-                            <h2>Hi Eesa Stevenson</h2>
+                            <h2>Hi {{auth()->user()->name}}</h2>
                             <div class="at-description">
-                                <p>Welcome back Eesa Stevenson. We are glad you are here. Monitor all the health activities and social distancing breaches.</p>
+                                <p>Welcome back {{auth()->user()->name}}. We are glad you are here. Monitor all the health activities and social distancing breaches.</p>
                             </div>
                         </div>
                     </div>
                     <div class="at-pagetitle">
-                        <h2>5 organizations found</h2>
+                        @if(count($organizations) > 1)
+                        <h2>{{count($organizations)}} organizations found</h2>
+                        @else
+                            <h2>{{count($organizations)}} organization found</h2>
+                        @endif
                         <a href="javascript: void(0);" class="at-btn" data-toggle="modal" data-target="#exampleModalCenter">Add Organization</a>
                     </div>
                     <div class="at-organizationholder">
+                        @foreach($organizations as $organization)
                         <div class="at-organizer">
                             <figure class="at-orgnizerimg">
-                                <img src="{{asset('asset/images/organiz1.png')}}" alt="orgnizer image">
+                                <img src="{{asset('uploads/organization/logos/'.$organization->image)}}" alt="orgnizer image">
                             </figure>
                             <div class="at-orgnizertitle">
-                                <h3>Tiger Aviation</h3>
-                                <span>Aviation Services</span>
+                                <h3>{{$organization->name}}</h3>
+                                <span>{{$organization->category}}</span>
                             </div>
                             <div class="at-organizeband">
-                                <h4>50 Bands Package</h4>
-                                <span>Resource Person: Eesa Stevenson</span>
+                                <h4>{{$organization->bands}} Bands Package</h4>
+                                <span>Resource Person: {{auth()->user()->name}}</span>
                             </div>
                             <div class="at-action">
                                 <h4>actions</h4>
@@ -45,150 +50,21 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="javascript: void(0);" class="at-btndelete">
-                                            <i class="icon-trash"></i>
-                                        </a>
+                                        <form action="{{route('organization.delete',['id'=>$organization->id])}}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="at-btndelete"><i class="icon-trash"></i></button>
+                                        </form>
                                     </li>
                                     <li>
-                                        <a href="dashboardvtwo.html" class="at-btnshare">
+                                        <a href="{{route('organization.dashboard')}}" class="at-btnshare">
                                             <i class="icon-share"></i>
                                         </a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
-                        <div class="at-organizer">
-                            <figure class="at-orgnizerimg">
-                                <img src="{{asset('asset/images/organiz2.png')}}" alt="orgnizer image">
-                            </figure>
-                            <div class="at-orgnizertitle">
-                                <h3>Tiger Aviation</h3>
-                                <span>Aviation Services</span>
-                            </div>
-                            <div class="at-organizeband">
-                                <h4>50 Bands Package</h4>
-                                <span>Resource Person: Eesa Stevenson</span>
-                            </div>
-                            <div class="at-action">
-                                <h4>actions</h4>
-                                <ul>
-                                    <li>
-                                        <a href="javascript: void(0);" class="at-btnpen">
-                                            <i class="icon-pen"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript: void(0);" class="at-btndelete">
-                                            <i class="icon-trash"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="dashboardvtwo.html" class="at-btnshare">
-                                            <i class="icon-share"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="at-organizer">
-                            <figure class="at-orgnizerimg">
-                                <img src="{{asset('asset/images/organiz3.png')}}" alt="orgnizer image">
-                            </figure>
-                            <div class="at-orgnizertitle">
-                                <h3>Tiger Aviation</h3>
-                                <span>Aviation Services</span>
-                            </div>
-                            <div class="at-organizeband">
-                                <h4>50 Bands Package</h4>
-                                <span>Resource Person: Eesa Stevenson</span>
-                            </div>
-                            <div class="at-action">
-                                <h4>actions</h4>
-                                <ul>
-                                    <li>
-                                        <a href="javascript: void(0);" class="at-btnpen">
-                                            <i class="icon-pen"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript: void(0);" class="at-btndelete">
-                                            <i class="icon-trash"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="dashboardvtwo.html" class="at-btnshare">
-                                            <i class="icon-share"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="at-organizer">
-                            <figure class="at-orgnizerimg">
-                                <img src="{{asset('asset/images/organiz4.png')}}" alt="orgnizer image">
-                            </figure>
-                            <div class="at-orgnizertitle">
-                                <h3>Tiger Aviation</h3>
-                                <span>Aviation Services</span>
-                            </div>
-                            <div class="at-organizeband">
-                                <h4>50 Bands Package</h4>
-                                <span>Resource Person: Eesa Stevenson</span>
-                            </div>
-                            <div class="at-action">
-                                <h4>actions</h4>
-                                <ul>
-                                    <li>
-                                        <a href="javascript: void(0);" class="at-btnpen">
-                                            <i class="icon-pen"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript: void(0);" class="at-btndelete">
-                                            <i class="icon-trash"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="dashboardvtwo.html" class="at-btnshare">
-                                            <i class="icon-share"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="at-organizer">
-                            <figure class="at-orgnizerimg">
-                                <img src="{{asset('asset/images/organiz5.png')}}" alt="orgnizer image">
-                            </figure>
-                            <div class="at-orgnizertitle">
-                                <h3>Tiger Aviation</h3>
-                                <span>Aviation Services</span>
-                            </div>
-                            <div class="at-organizeband">
-                                <h4>50 Bands Package</h4>
-                                <span>Resource Person: Eesa Stevenson</span>
-                            </div>
-                            <div class="at-action">
-                                <h4>actions</h4>
-                                <ul>
-                                    <li>
-                                        <a href="javascript: void(0);" class="at-btnpen">
-                                            <i class="icon-pen"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript: void(0);" class="at-btndelete">
-                                            <i class="icon-trash"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="dashboardvtwo.html" class="at-btnshare">
-                                            <i class="icon-share"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                            @endforeach
                     </div>
                 </div>
             </div>
@@ -207,40 +83,59 @@
                     <h5 class="modal-title" id="exampleModalLongTitle">Add organization</h5>
                 </div>
                 <div class="modal-body">
-                    <form class="at-modalform at-formtheme">
+                    <form class="at-modalform at-formtheme" action="{{route('organization.store')}}" method="post" enctype="multipart/form-data">
+                        @csrf
                         <fieldset>
                             <div class="at-uploadimg">
                                 <div class="form-group">
-                                    <input type="file" name="uploadlogo" id="at-uploadlogo">
+                                    <input type="file" name="image" id="at-uploadlogo">
                                     <label for="at-uploadlogo">
                                         <i class="icon-upload"></i>
                                         <span>Drop or upload logo</span>
                                     </label>
+                                    @error('image')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="at-orgnizanerdetails">
                                 <div class="form-group">
                                     <label>Organization Name</label>
-                                    <input type="text" name="orgnizer name" placeholder="Yale Ltd">
+                                    <input type="text" name="name" placeholder="Yale Ltd">
+                                    @error('name')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Category</label>
-                                    <input type="text" name="Category" placeholder="Sports">
+                                    <input type="text" name="category" placeholder="Sports">
+                                    @error('category')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Email ID</label>
                                     <input type="email" name="email" placeholder="abcd@gmail.com">
+                                    @error('email')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>No. of bands</label>
                                     <input type="text" name="bands" placeholder="30">
+                                    @error('bands')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Organization Admin</label>
-                                    <input type="text" name="admin name" placeholder="John Erick">
+                                    <input type="text" name="admin_name" placeholder="Organization Admin" value="{{auth()->user()->name}}">
+                                    @error('admin_name')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
-                                    <a href="javascript: void(0);" class="at-btn at-btnsubmit">submit</a>
+                                    <button type="submit" class="at-btn at-btnsubmit">submit</button>
                                 </div>
                             </div>
                         </fieldset>

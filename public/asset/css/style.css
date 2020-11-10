@@ -2,7 +2,7 @@
  @Author: Renesis Technologies
  @URL: https://renesistech.com/
  This file contains the styling for the actual theme, this is the file you need to edit to change the look of the theme.
- 
+
  This files contents are outlined below.
  01.	Theme Reset Style
  02.	Global Elements
@@ -17,7 +17,7 @@
 */
 
 /* =============================================
-			Theme Reset Style					
+			Theme Reset Style
 ============================================= */
 :root{
 	--themeColor: #fff;
@@ -242,7 +242,7 @@ p ins { color: #666; }
 dl dd { margin-left: 20px; }
 address { font-style: italic; }
 /* =============================================
-			Theme Custom Select					
+			Theme Custom Select
 ============================================= */
 .at-select {
 	color:#666;
@@ -275,7 +275,7 @@ address { font-style: italic; }
 }
 .at-select select option { color:#666; }
 /* =============================================
-		Theme Custom CheckBox Radio				
+		Theme Custom CheckBox Radio
 ============================================= */
 .at-formtheme{
 	width:100%;
@@ -336,7 +336,7 @@ address { font-style: italic; }
 .at-radio input[type=radio]:checked + label:before,
 .at-checkbox input[type=checkbox]:checked + label:before {content:'\f046';}
 /* =============================================
-			Theme Global Elements				
+			Theme Global Elements
 ============================================= */
 .at-haslayout {
 	width:100%;
@@ -398,7 +398,7 @@ address { font-style: italic; }
 .at-bglight { background:#f7f7f7; }
 .at-bgdark { background:#373542; }
 /* =============================================
-			Theme Styling						
+			Theme Styling
 ============================================= */
 .at-wrapper {
 	overflow: hidden;
@@ -429,7 +429,8 @@ address { font-style: italic; }
 	width: 41%;
 	float: left;
 	height: 100vh;
-	margin: 0 130px 0 0; 
+    min-height: 768px;
+	margin: 0 130px 0 0;
     display: -webkit-box;
     display: flex;
     -webkit-flex-wrap: nowrap;
@@ -461,6 +462,7 @@ address { font-style: italic; }
 	width: 30%;
 	float: left;
 	height: 100vh;
+    min-height: 768px;
     display: -webkit-box;
     display: flex;
     -webkit-flex-wrap: nowrap;
@@ -742,7 +744,7 @@ address { font-style: italic; }
 	margin: 0;
 	font-size: 32px;
 	font-weight: 600;
-	color: #4b9b7a;	
+	color: #4b9b7a;
 	line-height: 36px;
 }
 .at-alercontent .at-description{padding: 20px 0 0;}
@@ -789,7 +791,7 @@ address { font-style: italic; }
 .at-accounttitle{
 	width: 100%;
 	float: left;
-	padding: 0 0 55px;	
+	padding: 0 0 55px;
 	text-align: center;
 }
 .at-aindividualtitle{padding: 0 0 70px;}
@@ -850,8 +852,7 @@ address { font-style: italic; }
 }
 .at-orgnizerimg{
 	width: 165px;
-	height: 100%;
-	max-height: 106px;
+	height: 106px;
 	margin: 0 auto 15px;
 }
 .at-orgnizerimg img{
@@ -945,6 +946,7 @@ address { font-style: italic; }
 	padding: 0 10px;
 	list-style-type: none;
 }
+.at-action ul li button,
 .at-action ul li a{
 	float: left;
 	width: 50px;
@@ -1366,7 +1368,7 @@ address { font-style: italic; }
 	width: 100%;
 	float: left;
 	list-style: none;
-	padding: 25px 0 45px; 
+	padding: 25px 0 45px;
 }
 .at-widgetcontacts ul li{
 	width: 100%;
@@ -1506,7 +1508,7 @@ address { font-style: italic; }
 	border-left: 205px solid transparent;
 	border-right: 207px solid transparent;
 	border-top: 120px solid white;
-	
+
 }
 /* .at-packagecontent::before{
 	top: -51px;
@@ -1800,11 +1802,11 @@ address { font-style: italic; }
 	line-height: 40px;
 	text-align: center;
 	border-radius: 50%;
-	background: rgb(75,155,122); 
-	background: -moz-linear-gradient(left,  rgba(75,155,122,1) 0%, rgba(34,117,83,1) 100%); 
-	background: -webkit-linear-gradient(left,  rgba(75,155,122,1) 0%,rgba(34,117,83,1) 100%); 
-	background: linear-gradient(to bottom,  rgba(75,155,122,1) 0%,rgba(34,117,83,1) 100%); 
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4b9b7a', endColorstr='#227553',GradientType=1 ); 
+	background: rgb(75,155,122);
+	background: -moz-linear-gradient(left,  rgba(75,155,122,1) 0%, rgba(34,117,83,1) 100%);
+	background: -webkit-linear-gradient(left,  rgba(75,155,122,1) 0%,rgba(34,117,83,1) 100%);
+	background: linear-gradient(to bottom,  rgba(75,155,122,1) 0%,rgba(34,117,83,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4b9b7a', endColorstr='#227553',GradientType=1 );
 }
 .at-adduserarea ul li a i{line-height: 40px;}
 .at-adduserarea ul li .form-group{margin: 0;}
@@ -1838,7 +1840,7 @@ address { font-style: italic; }
     display: grid;
     grid-gap: 25px;
     padding: 0 0 20px;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));	
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
 }
 .at-user{
 	width: 100%;
@@ -2570,7 +2572,7 @@ address { font-style: italic; }
 }
 .at-heartrating ul li:nth-child(3) span{
 	color: #00a167;
-	text-align: center;	
+	text-align: center;
 }
 .at-heartrating ul li:nth-child(4) span{
 	float: right;
@@ -2990,7 +2992,7 @@ address { font-style: italic; }
 .at-userinfomodal .at-modaltitle {padding: 0 0 50px;}
 .at-userinfomodal .at-modaltitle h3{
 	float: left;
-	color: #3b3b3b;	
+	color: #3b3b3b;
 }
 .at-userinfomodal .at-modaltitle  span{
 	float: right;

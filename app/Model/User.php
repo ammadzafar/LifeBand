@@ -38,4 +38,33 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+    public function isAdmin()
+    {
+        $data =Role::where('name',Role::$ADMIN)->first()->id;
+        return auth()->user()->role_id == $data;
+    }
+    public function isOrganizer()
+    {
+        $data =Role::where('name',Role::$ORGANIZATION)->first()->id;
+        return auth()->user()->role_id == $data;
+    }
+    public function isFamilyAccountant()
+    {
+        $data =Role::where('name',Role::$FAMILY)->first()->id;
+        return auth()->user()->role_id == $data;
+    }
+    public function isIndividualAccountant()
+    {
+        $data =Role::where('name',Role::$INDIVIDUAL)->first()->id;
+        return auth()->user()->role_id == $data;
+    }
+    public function getRole()
+    {
+        return auth()->user()->role->name;
+    }
 }
