@@ -27,13 +27,39 @@ class OrganizationController extends Controller
     }
     public function organizationStore(OrganizationRequest $request)
     {
-//         dd($request->all());
-         $this->organization->organizationStore($request);
-         return redirect()->route('organization.home');
+        try {
+            $this->organization->organizationStore($request);
+            return redirect()->route('organization.home')->with('success', 'Organization Added Successfully!');
+        }
+        catch (\Exception $e)
+        {
+            return redirect()->back()->with('error', error_details($e,'Something went wrong!'.$e->getMessage()));
+        }
+    }
+    public function organizationEdit($id)
+    {
+            return $this->organization->Edit($id);
+    }
+    public function organizationUpdate(OrganizationRequest $request,$id)
+    {
+        try {
+            $this->organization->update($request,$id);
+            return redirect()->route('organization.home')->with('success', 'Organization Updated Successfully!');
+        }
+        catch (\Exception $e)
+        {
+            return redirect()->back()->with('error', error_details($e,'Something went wrong!'.$e->getMessage()));
+        }
     }
     public function organizationDelete($id)
     {
-         $this->organization->delete($id);
-        return redirect()->route('organization.home');
+        try {
+            $this->organization->delete($id);
+            return redirect()->route('organization.home')->with('success', 'Organization Deleted Successfully!');
+        }
+        catch (\Exception $e)
+        {
+            return redirect()->back()->with('error', error_details($e,'Something went wrong!'.$e->getMessage()));
+        }
     }
 }

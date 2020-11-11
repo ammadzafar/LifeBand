@@ -27,6 +27,32 @@ class AdminServices
 
         $organization->save();
     }
+    public function Edit($id)
+    {
+        $organization = Organization::findorfail($id);
+//        dd($organization);
+        return view('admin.organization.modal',compact('organization'));
+    }
+    public function update($request,$id)
+    {
+        $update_organization = Organization::findorfail($id);
+        $update_organization->name = $request->name;
+        $update_organization->category = $request->category;
+
+        if ($request->hasFile('image'))
+        {
+            $filename =$request->file('image')->getClientOriginalName();
+            $request->file('image')->move('uploads/organization/logos',$filename);
+        }
+
+        $update_organization->image = $filename;
+        $update_organization->email = $request->email;
+        $update_organization->bands = $request->bands;
+        $update_organization->admin_name = $request->admin_name;
+
+        $update_organization->save();
+
+    }
     public function delete($id)
     {
         $organization = Organization::findorfail($id);

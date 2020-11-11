@@ -29,6 +29,8 @@ Route::group(['middleware'=>['admin','auth'],'prefix'=>'superadmin'],function ()
         Route::get('/dashboard','Admin\OrganizationController@organizationDashboard')->name('organization.dashboard');
                  /*=========== Storing Organizations  =========== */
         Route::post('/store','Admin\OrganizationController@organizationStore')->name('organization.store');
+        Route::get('/edit/{id}','Admin\OrganizationController@organizationEdit')->name('organization.edit');
+        Route::put('/update/{id}','Admin\OrganizationController@organizationUpdate')->name('organization.update');
         Route::delete('/delete/{id}','Admin\OrganizationController@organizationDelete')->name('organization.delete');
 
     });
