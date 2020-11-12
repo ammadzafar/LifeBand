@@ -32,7 +32,10 @@ Route::group(['middleware'=>['admin','auth'],'prefix'=>'superadmin'],function ()
         Route::get('/edit/{id}','Admin\OrganizationController@organizationEdit')->name('organization.edit');
         Route::put('/update/{id}','Admin\OrganizationController@organizationUpdate')->name('organization.update');
         Route::delete('/delete/{id}','Admin\OrganizationController@organizationDelete')->name('organization.delete');
-
+                 /*=========== Organizations Users  =========== */
+        Route::get('/users','Admin\OrganizationController@userIndex')->name('organization.users');
+                 /*=========== Organizations Users Group =========== */
+        Route::get('/users/group','Admin\OrganizationController@groupIndex')->name('organization.users.group');
     });
 
 });

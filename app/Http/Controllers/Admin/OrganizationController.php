@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\OrganizationRequest;
+use App\Http\Requests\OrganizationUpdateRequest;
 use App\Model\Organization;
 use App\Services\Admin\AdminServices;
 use Illuminate\Http\Request;
@@ -36,11 +37,15 @@ class OrganizationController extends Controller
             return redirect()->back()->with('error', error_details($e,'Something went wrong!'.$e->getMessage()));
         }
     }
+//    public function organizationShowModal()
+//    {
+//        return view('admin.organization.modal');
+//    }
     public function organizationEdit($id)
     {
             return $this->organization->Edit($id);
     }
-    public function organizationUpdate(OrganizationRequest $request,$id)
+    public function organizationUpdate(OrganizationUpdateRequest $request,$id)
     {
         try {
             $this->organization->update($request,$id);
@@ -58,6 +63,26 @@ class OrganizationController extends Controller
             return redirect()->route('organization.home')->with('success', 'Organization Deleted Successfully!');
         }
         catch (\Exception $e)
+        {
+            return redirect()->back()->with('error', error_details($e,'Something went wrong!'.$e->getMessage()));
+        }
+    }
+    public function userIndex()
+    {
+        try {
+            return view('admin.organization.users');
+        }
+        catch(\Exception $e)
+        {
+            return redirect()->back()->with('error', error_details($e,'Something went wrong!'.$e->getMessage()));
+        }
+    }
+    public function groupIndex()
+    {
+        try {
+            return view('admin.organization.group');
+        }
+        catch(\Exception $e)
         {
             return redirect()->back()->with('error', error_details($e,'Something went wrong!'.$e->getMessage()));
         }

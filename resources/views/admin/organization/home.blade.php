@@ -25,7 +25,7 @@
                         @else
                             <h2>{{count($organizations)}} organization found</h2>
                         @endif
-                        <a href="javascript: void(0);" class="at-btn" data-toggle="modal" data-target="#organizationModal">Add Organization</a>
+                        <a href="javascript: void(0);" class="at-btn add-btn" data-toggle="modal" data-target="#organizationModal">Add Organization</a>
                     </div>
                     <div class="at-organizationholder">
                         @foreach($organizations as $org)
@@ -95,25 +95,34 @@
 @section('scripts')
     <script>
         $(document).ready(function(){
-            $(document).on('click','.at-btnpen',function(e){
+            $(document).on('change','#at-uploadlogo',function(e) {
+                let image_src = $('.org-image').attr('src', URL.createObjectURL(e.target.files[0]));
+                if (image_src != null)
+                {
+                    $('.icon-upload').css({'display':'none'});
+                }
+            });
+            $(document).on('click','.at-btnpen',function(e) {
                 e.preventDefault();
                 $('#exampleModalLongTitle').text('Edit organization');
                 let id = $(this).data('id');
                 $.get('/superadmin/organization/edit/'+id, function(response){
-                $('#organizationModal').modal('show')
-                $('.organization_data').html(response)
+                $('#organizationModal').modal('show');
+                $('.organization_data').html(response);
 
-                    // if (response.status == 'success')
-                    // {
-                    //     $("#organizationModal .modal-body").html('');
-                    // }
                 })
+            });
+            $('#organizationModal').on('hidden.bs.modal',function (e){
+
+                $('#exampleModalLongTitle').text('Add organization');
+                $(this).find('.at-formtheme .org-image').attr('src','');
+                $(this).find('.at-formtheme .org-name').val("");
+                $(this).find('.at-formtheme .org-category').val("");
+                $(this).find('.at-formtheme .org-email').val("");
+                $(this).find('.at-formtheme .org-band').val("");
+                $(this).find('.at-formtheme .org-category').val("");
             })
-            if ($('.modal-body').find('.org-image').attr('src') != '')
-            {
-                $(this).find('.icon-upload').css({'display':'none'});
-                console.log('in');
-            }
         });
     </script>
-    @endsection
+@endsection
+

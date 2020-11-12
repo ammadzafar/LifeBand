@@ -4,7 +4,7 @@
 <header id="at-header" class="at-header">
     <strong class="at-logo">
         @if(auth()->user()->isAdmin())
-        <a href="{{route('home.index')}}">
+            <a href="{{route('home.index')}}">
             @elseif(auth()->user()->isOrganizer())
                 <a href="{{route('organization.index')}}">
                     @elseif(auth()->user()->isFamilyAccountant())
@@ -13,19 +13,19 @@
                                 <a href="{{route('individual.index')}}">
             @endif
             <img src="{{asset('asset/images/logo.png')}}" alt="logo image">
-        </a>
+            </a>
     </strong>
-    @if(\Illuminate\Support\Facades\Request::is('superadmin/organization/dashboard'))
+    @if(\Illuminate\Support\Facades\Request::is('superadmin/organization/dashboard') || \Illuminate\Support\Facades\Request::is('superadmin/organization/users') || \Illuminate\Support\Facades\Request::is('superadmin/organization/users/group') )
         <nav class="at-navigation">
             <ul>
                 <li class="at-active">
-                    <a href="dashboardvtwo.html">
+                    <a href="{{route('organization.dashboard')}}">
                         <i class="icon-dashboard"></i>
                         <span>dashboard</span>
                     </a>
                 </li>
                 <li>
-                    <a href="user.html">
+                    <a href="{{route('organization.users')}}">
                         <i class="icon-user"></i>
                         <span>users</span>
                     </a>

@@ -12,7 +12,7 @@
             <div class="at-sidebaruserdetail">
                 <div class="at-userimagearea">
                     <figure class="at-userimage">
-                        <img src="images/users.png" alt="user image">
+                        <img src="{{asset('asset/images/users.png')}}" alt="user image">
                         <span></span>
                     </figure>
                     <a href="javascript: void(0);" class="at-btnediticon">
@@ -292,7 +292,7 @@
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModalCentervfive">create group</a>
-                                            <a class="dropdown-item" href="groups.html">view group</a>
+                                            <a class="dropdown-item" href="{{route('organization.users.group')}}">view group</a>
                                         </div>
                                     </div>
                                 </li>

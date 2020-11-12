@@ -10,24 +10,21 @@
 
 <script>
     $(document).ready(function (){
-        if ("{{\Illuminate\Support\Facades\Session::has('error')}}")
-        {
+        if ("{{\Illuminate\Support\Facades\Session::has('error')}}") {
             swal.fire({
                 icon: 'error',
                 title: 'error',
                 text: '{{\Illuminate\Support\Facades\Session::get('error')}}'
             });
         }
-        if ("{{\Illuminate\Support\Facades\Session::has('success')}}")
-        {
+        if ("{{\Illuminate\Support\Facades\Session::has('success')}}"){
             swal.fire({
                 icon: 'success',
                 title: 'success',
                 text: '{{\Illuminate\Support\Facades\Session::get('success')}}'
             });
         }
-        if ("{{\Illuminate\Support\Facades\Session::has('warning')}}")
-        {
+        if ("{{\Illuminate\Support\Facades\Session::has('warning')}}"){
             swal.fire({
                 icon: 'warning',
                 title: 'warning',

@@ -1022,9 +1022,10 @@ address { font-style: italic; }
     border-radius: 50%;
 }
 .at-uploadimg .form-group label em img{
-    width: 100%;
-    height: auto;
-    display: block;
+    width: 135px;
+    height: 135px;
+    margin: 0 auto;
+    /*display: block;*/
     border-radius: 50%;
 }
 .at-uploadimg .form-group label span{
