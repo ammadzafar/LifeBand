@@ -38,6 +38,16 @@ Route::group(['middleware'=>['admin','auth'],'prefix'=>'superadmin'],function ()
         Route::get('/users/group','Admin\OrganizationController@groupIndex')->name('organization.users.group');
     });
 
+                /*=========== Family Accounts =========== */
+
+    Route::group(['prefix'=>'family-accounts','namespace'=>'Admin'],function (){
+        Route::get('/home','FamilyController@index')->name('family.accounts.home');
+        Route::post('/store','FamilyController@store')->name('family.accounts.store');
+        Route::get('/edit/{id}','FamilyController@edit')->name('family.accounts.edit');
+        Route::put('/update/{id}','FamilyController@update')->name('family.accounts.update');
+        Route::delete('/delete/{id}','FamilyController@delete')->name('family.accounts.delete');
+    });
+
 });
 
 Route::group(['middleware'=>['organization','auth'],'prefix'=>'organization'],function (){

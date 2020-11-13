@@ -644,6 +644,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-body">
+
                     <form class="at-modalform at-formtheme">
                         <fieldset>
                             <div class="at-modaltitle">
@@ -662,6 +663,7 @@
                             </div>
                         </fieldset>
                     </form>
+
                 </div>
             </div>
         </div>

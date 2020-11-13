@@ -32,7 +32,7 @@
                             </a>
                         </div>
                         <div class="at-account">
-                            <a href="familyaccount.html">
+                            <a href="{{route('family.accounts.home')}}">
                                 <div class="at-accounttitle">
                                     <h3>Family Accounts</h3>
                                 </div>

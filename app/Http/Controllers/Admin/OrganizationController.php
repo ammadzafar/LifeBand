@@ -37,10 +37,6 @@ class OrganizationController extends Controller
             return redirect()->back()->with('error', error_details($e,'Something went wrong!'.$e->getMessage()));
         }
     }
-//    public function organizationShowModal()
-//    {
-//        return view('admin.organization.modal');
-//    }
     public function organizationEdit($id)
     {
             return $this->organization->Edit($id);

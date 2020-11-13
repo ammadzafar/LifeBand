@@ -1085,7 +1085,7 @@ address { font-style: italic; }
 	content: '';
 	height: 79px;
 	position: absolute;
-	background: url(images/1Intersect.png) no-repeat;
+	background: url(../images/1Intersect.png) no-repeat;
 }
 .at-familyholder .at-organizer::before{
 	top: 0;
@@ -1094,7 +1094,7 @@ address { font-style: italic; }
 	content: '';
 	height: 79px;
 	position: absolute;
-	background: url(images/Intersect.png)  no-repeat;
+	background: url(../images/Intersect.png)  no-repeat;
 }
 .at-familyholder .at-orgnizerimg{
 	width: 104px;
