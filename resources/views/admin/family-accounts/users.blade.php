@@ -645,8 +645,7 @@
             <div class="modal-content">
                 <div class="modal-body">
 
-                    <form class="at-modalform at-formtheme" action="{{route('user.mail')}}" method="post">
-                        @csrf
+                    <form class="at-modalform at-formtheme">
                         <fieldset>
                             <div class="at-modaltitle">
                                 <span>tiger aviation</span>
@@ -659,7 +658,7 @@
                                 <label>enter email id</label>
                                 <div class="at-inputsendinvite">
                                     <input type="text" name="email" placeholder="John.er@systech.com">
-                                    <button type="submit" class="at-btn at-bggreen" {{--data-toggle="modal" data-target="#exampleModalCentervtwo"--}}>send invite</button>
+                                    <a href="javascritp: void(0);" class="at-btn at-bggreen" data-toggle="modal" data-target="#exampleModalCentervtwo">send invite</a>
                                 </div>
                             </div>
                         </fieldset>
@@ -972,4 +971,4 @@
     <!--************************************
             Modal End
     *************************************-->
-    @endsection
+@endsection

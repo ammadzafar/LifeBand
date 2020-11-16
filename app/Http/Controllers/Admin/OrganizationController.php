@@ -8,6 +8,7 @@ use App\Model\Organization;
 use App\Services\Admin\AdminServices;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class OrganizationController extends Controller
 {
@@ -22,9 +23,11 @@ class OrganizationController extends Controller
         $organizations = Organization::all();
         return view ('admin.organization.home',compact('organizations'));
     }
-    public function organizationDashboard()
+    public function organizationDashboard($id)
     {
-        return view('admin.organization.dashboard');
+        $organization = Organization::findorfail($id);
+        Session::put('type','organization');
+        return view('admin.organization.dashboard',compact('organization'));
     }
     public function organizationStore(OrganizationRequest $request)
     {

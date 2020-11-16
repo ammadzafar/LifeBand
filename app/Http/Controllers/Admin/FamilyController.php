@@ -7,6 +7,7 @@ use App\Model\FamilyAccount;
 use App\Services\Admin\FamilyAccountsServices;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class FamilyController extends Controller
 {
@@ -14,6 +15,17 @@ class FamilyController extends Controller
     public function __construct(FamilyAccountsServices $family)
     {
         $this->family = $family;
+    }
+    public function dashboard($id)
+    {
+        $family_account = FamilyAccount::findorfail($id);
+        Session::put('type', 'family');
+        return view('admin.family-accounts.dashboard',compact('family_account'));
+    }
+    public function userIndex()
+    {
+
+        return view('admin.family-accounts.users');
     }
     public function index()
     {

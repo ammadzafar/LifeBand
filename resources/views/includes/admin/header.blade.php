@@ -3,32 +3,41 @@
     *************************************-->
 <header id="at-header" class="at-header">
     <strong class="at-logo">
-        @if(auth()->user()->isAdmin())
-            <a href="{{route('home.index')}}">
-            @elseif(auth()->user()->isOrganizer())
-                <a href="{{route('organization.index')}}">
-                    @elseif(auth()->user()->isFamilyAccountant())
-                        <a href="{{route('family.index')}}">
-                            @elseif(auth()->user()->isIndividualAccountant())
-                                <a href="{{route('individual.index')}}">
-            @endif
-            <img src="{{asset('asset/images/logo.png')}}" alt="logo image">
-            </a>
+{{--        @if(auth()->user()->isAdmin())--}}
+{{--            <a href="{{route('home.index')}}">--}}
+{{--        @elseif(auth()->user()->isOrganizer())--}}
+{{--             <a href="{{route('organization.index')}}">--}}
+{{--        @elseif(auth()->user()->isFamilyAccountant())--}}
+{{--             <a href="{{route('family.index')}}">--}}
+{{--        @elseif(auth()->user()->isIndividualAccountant())--}}
+{{--             <a href="{{route('individual.index')}}">--}}
+{{--        @endif--}}
+
+        <a href="{{route('home.index')}}"><img src="{{asset('asset/images/logo.png')}}" alt="logo image"></a>
     </strong>
-    @if(\Illuminate\Support\Facades\Request::is('superadmin/organization/dashboard') || \Illuminate\Support\Facades\Request::is('superadmin/organization/users') || \Illuminate\Support\Facades\Request::is('superadmin/organization/users/group') )
+    @php($path = ['superadmin/organization/dashboard/*','superadmin/organization/users','superadmin/family-accounts/dashboard/*','superadmin/family-accounts/users'])
+    @if(show_navbar($path))
+{{--        {{dd(session('type'))}}--}}
+{{--        {{dd($path[3] == 'superadmin/family-accounts/users')}}--}}
         <nav class="at-navigation">
             <ul>
-                <li class="at-active">
-                    <a href="{{route('organization.dashboard')}}">
+                <li class="{{at_active('superadmin/organization/dashboard/*')}}">
+                    <a href="{{route('organization.dashboard',auth()->user()->id)}}">
                         <i class="icon-dashboard"></i>
                         <span>dashboard</span>
                     </a>
                 </li>
-                <li>
-                    <a href="{{route('organization.users')}}">
-                        <i class="icon-user"></i>
-                        <span>users</span>
-                    </a>
+                <li class="{{at_active('superadmin/organization/users')}}">
+
+                    @if(session('type') == 'family')
+                        <a href=" {{route('family.accounts.users')}}"> <i class="icon-user"></i>
+                            <span>users</span>
+                        </a>
+                    @elseif(session('type') == 'organization')
+                        <a href="{{route('organization.users')}}"> <i class="icon-user"></i>
+                            <span>users</span>
+                        </a>
+                    @endif
                 </li>
                 <li>
                     <a href="socialdistance.html">
@@ -38,7 +47,8 @@
                 </li>
             </ul>
         </nav>
-        @endif
+    @endif
+
     <div class="at-profilearea">
         <div class="dropdown show at-dropdown">
             <a class="at-btnbellicon" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

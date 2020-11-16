@@ -57,7 +57,7 @@
                                         </form>
                                     </li>
                                     <li>
-                                        <a href="{{route('organization.dashboard')}}" class="at-btnshare">
+                                        <a href="{{route('organization.dashboard',['id'=>$org->id])}}" class="at-btnshare">
                                             <i class="icon-share"></i>
                                         </a>
                                     </li>

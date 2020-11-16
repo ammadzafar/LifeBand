@@ -15,6 +15,9 @@
 //    return view('welcome');
 //});
 
+Route::post('superadmin/organization/mail','Admin\MailController@store')->name('user.mail');
+
+
 
 
 Route::get('/','HomeController@lifeBand')->name('lifeband');
@@ -26,7 +29,7 @@ Route::group(['middleware'=>['admin','auth'],'prefix'=>'superadmin'],function ()
 
     Route::group(['prefix'=>'organization'],function (){
         Route::get('/home','Admin\OrganizationController@organizationIndex')->name('organization.home');
-        Route::get('/dashboard','Admin\OrganizationController@organizationDashboard')->name('organization.dashboard');
+        Route::get('/dashboard/{id}','Admin\OrganizationController@organizationDashboard')->name('organization.dashboard');
                  /*=========== Storing Organizations  =========== */
         Route::post('/store','Admin\OrganizationController@organizationStore')->name('organization.store');
         Route::get('/edit/{id}','Admin\OrganizationController@organizationEdit')->name('organization.edit');
@@ -41,11 +44,15 @@ Route::group(['middleware'=>['admin','auth'],'prefix'=>'superadmin'],function ()
                 /*=========== Family Accounts =========== */
 
     Route::group(['prefix'=>'family-accounts','namespace'=>'Admin'],function (){
+        Route::get('/dashboard/{id}','FamilyController@dashboard')->name('family.accounts.dashboard');
+                /*=========== Storing Family Account  =========== */
         Route::get('/home','FamilyController@index')->name('family.accounts.home');
         Route::post('/store','FamilyController@store')->name('family.accounts.store');
         Route::get('/edit/{id}','FamilyController@edit')->name('family.accounts.edit');
         Route::put('/update/{id}','FamilyController@update')->name('family.accounts.update');
         Route::delete('/delete/{id}','FamilyController@delete')->name('family.accounts.delete');
+               /*=========== Family Account Users  =========== */
+        Route::get('/users','FamilyController@userIndex')->name('family.accounts.users');
     });
 
 });

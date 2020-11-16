@@ -119,11 +119,11 @@
                         </div>
                         <div class="at-widgetcontent">
                             <figure class="at-orgnizerimg">
-                                <img src="{{asset('uploads/organization/logos/'.$organization->image)}}" alt="family image">
+                                <img src="{{asset('uploads/family/images/'.$family_account->image)}}" alt="family image">
                             </figure>
                             <div class="at-orgnizertitle">
-                                <h3>{{$organization->name}}</h3>
-                                <span>{{$organization->admin_name}}</span>
+                                <h3>{{$family_account->admin_name}}</h3>
+                                <span>Family Admin</span>
                             </div>
                             <div class="at-activepeoplelist">
                                 <h3>3 people active</h3>
@@ -194,7 +194,7 @@
     <!--************************************
             Main End
     *************************************-->
-    @endsection
+@endsection
 @section('scripts')
     <script>
         $(document).ready(function (){
@@ -373,4 +373,4 @@
         });
 
     </script>
-    @endsection
+@endsection

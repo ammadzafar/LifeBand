@@ -56,7 +56,7 @@
                                         </form>
                                     </li>
                                     <li>
-                                        <a href="dashboardvtwo.html" class="at-btnshare">
+                                        <a href="{{route('family.accounts.dashboard',['id'=>$family->id])}}" class="at-btnshare">
                                             <i class="icon-share"></i>
                                         </a>
                                     </li>
