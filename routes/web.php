@@ -17,8 +17,11 @@
 
 Route::post('superadmin/organization/mail','Admin\MailController@store')->name('user.mail');
 
+Route::get('mail/registration',function (){
+    return view('mail');
+});
 
-
+                 /*===========  Main Routes  =========== */
 
 Route::get('/','HomeController@lifeBand')->name('lifeband');
 
@@ -36,9 +39,12 @@ Route::group(['middleware'=>['admin','auth'],'prefix'=>'superadmin'],function ()
         Route::put('/update/{id}','Admin\OrganizationController@organizationUpdate')->name('organization.update');
         Route::delete('/delete/{id}','Admin\OrganizationController@organizationDelete')->name('organization.delete');
                  /*=========== Organizations Users  =========== */
-        Route::get('/users','Admin\OrganizationController@userIndex')->name('organization.users');
+        Route::get('/users/{id}','Admin\OrganizationController@userIndex')->name('organization.users');
                  /*=========== Organizations Users Group =========== */
         Route::get('/users/group','Admin\OrganizationController@groupIndex')->name('organization.users.group');
+                /*=========== Organizations Users Invite =========== */
+        Route::post('/mail','Admin\MailController@store')->name('organization.user.store.email');
+        Route::get('/user/invite/{email}','Admin\MailController@create')->name('user.invite.mail');
     });
 
                 /*=========== Family Accounts =========== */

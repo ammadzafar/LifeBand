@@ -29,6 +29,28 @@ class OrganizationController extends Controller
         Session::put('type','organization');
         return view('admin.organization.dashboard',compact('organization'));
     }
+    public function userIndex($id)
+    {
+        try {
+            $organization = Organization::findorfail($id);
+//            dd($organization);
+            return view('admin.organization.users',compact('organization'));
+        }
+        catch(\Exception $e)
+        {
+            return redirect()->back()->with('error', error_details($e,'Something went wrong!'.$e->getMessage()));
+        }
+    }
+    public function groupIndex()
+    {
+        try {
+            return view('admin.organization.group');
+        }
+        catch(\Exception $e)
+        {
+            return redirect()->back()->with('error', error_details($e,'Something went wrong!'.$e->getMessage()));
+        }
+    }
     public function organizationStore(OrganizationRequest $request)
     {
         try {
@@ -62,26 +84,6 @@ class OrganizationController extends Controller
             return redirect()->route('organization.home')->with('success', 'Organization Deleted Successfully!');
         }
         catch (\Exception $e)
-        {
-            return redirect()->back()->with('error', error_details($e,'Something went wrong!'.$e->getMessage()));
-        }
-    }
-    public function userIndex()
-    {
-        try {
-            return view('admin.organization.users');
-        }
-        catch(\Exception $e)
-        {
-            return redirect()->back()->with('error', error_details($e,'Something went wrong!'.$e->getMessage()));
-        }
-    }
-    public function groupIndex()
-    {
-        try {
-            return view('admin.organization.group');
-        }
-        catch(\Exception $e)
         {
             return redirect()->back()->with('error', error_details($e,'Something went wrong!'.$e->getMessage()));
         }

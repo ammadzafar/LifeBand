@@ -15,14 +15,14 @@
 
         <a href="{{route('home.index')}}"><img src="{{asset('asset/images/logo.png')}}" alt="logo image"></a>
     </strong>
-    @php($path = ['superadmin/organization/dashboard/*','superadmin/organization/users','superadmin/family-accounts/dashboard/*','superadmin/family-accounts/users'])
+    @php($path = ['superadmin/organization/dashboard/*','superadmin/organization/users/*','superadmin/family-accounts/dashboard/*','superadmin/family-accounts/users'])
     @if(show_navbar($path))
 {{--        {{dd(session('type'))}}--}}
 {{--        {{dd($path[3] == 'superadmin/family-accounts/users')}}--}}
         <nav class="at-navigation">
             <ul>
                 <li class="{{at_active('superadmin/organization/dashboard/*')}}">
-                    <a href="{{route('organization.dashboard',auth()->user()->id)}}">
+                    <a href="{{route('organization.dashboard',$organization->id)}}">
                         <i class="icon-dashboard"></i>
                         <span>dashboard</span>
                     </a>
@@ -34,7 +34,7 @@
                             <span>users</span>
                         </a>
                     @elseif(session('type') == 'organization')
-                        <a href="{{route('organization.users')}}"> <i class="icon-user"></i>
+                        <a href="{{route('organization.users',$organization->id)}}"> <i class="icon-user"></i>
                             <span>users</span>
                         </a>
                     @endif

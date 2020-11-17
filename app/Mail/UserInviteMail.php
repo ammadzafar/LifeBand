@@ -10,15 +10,16 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 class UserInviteMail extends Mailable
 {
     use Queueable, SerializesModels;
+    public $data;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($mail)
     {
-        //
+        $this->data = $mail;
     }
 
     /**
@@ -28,6 +29,6 @@ class UserInviteMail extends Mailable
      */
     public function build()
     {
-        return $this->from('example@example.com')->view('auth.login');
+        return $this->from('lifeband@gmail.com')->subject('New User Invite')->view('mail')->with('data',$this->data);
     }
 }

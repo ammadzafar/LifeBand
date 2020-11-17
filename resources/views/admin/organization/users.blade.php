@@ -628,7 +628,6 @@
                                 </div>
                             </a>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -645,7 +644,7 @@
             <div class="modal-content">
                 <div class="modal-body">
 
-                    <form class="at-modalform at-formtheme" action="{{route('user.mail')}}" method="post">
+                    <form class="at-modalform at-formtheme" action="{{route('organization.user.store.email')}}" method="post">
                         @csrf
                         <fieldset>
                             <div class="at-modaltitle">
@@ -659,6 +658,7 @@
                                 <label>enter email id</label>
                                 <div class="at-inputsendinvite">
                                     <input type="text" name="email" placeholder="John.er@systech.com">
+                                    <input type="hidden" name="account_name" value="{{$organization->name}}">
                                     <button type="submit" class="at-btn at-bggreen" {{--data-toggle="modal" data-target="#exampleModalCentervtwo"--}}>send invite</button>
                                 </div>
                             </div>
