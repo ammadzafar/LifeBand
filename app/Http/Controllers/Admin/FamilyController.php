@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\FamilyAccountRequest;
 use App\Model\FamilyAccount;
+use App\Model\UserAccount;
 use App\Services\Admin\FamilyAccountsServices;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -22,10 +23,11 @@ class FamilyController extends Controller
         Session::put('type', 'family');
         return view('admin.family-accounts.dashboard',compact('family_account'));
     }
-    public function userIndex()
+    public function userIndex($id)
     {
-
-        return view('admin.family-accounts.users');
+        $family_account = FamilyAccount::findorfail($id);
+        $users = UserAccount::where('account_id',$family_account->id)->get();
+        return view('admin.family-accounts.users',compact('family_account','users'));
     }
     public function index()
     {

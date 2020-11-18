@@ -18,7 +18,7 @@ class MailServices
 //        ]);
 
         $mail = new SentMail();
-        $mail->account_name = $request->account_name;
+        $mail->account_id = $request->account_id;
         $mail->email = $request->email;
 //        dd($mail);
         $mail->save();

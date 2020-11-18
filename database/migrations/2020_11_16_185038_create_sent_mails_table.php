@@ -15,7 +15,7 @@ class CreateSentMailsTable extends Migration
     {
         Schema::create('sent_mails', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('account_name');
+            $table->uuid('account_id');
             $table->string('email')->unique();
             $table->timestamps();
         });

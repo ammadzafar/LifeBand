@@ -15,22 +15,28 @@
 
         <a href="{{route('home.index')}}"><img src="{{asset('asset/images/logo.png')}}" alt="logo image"></a>
     </strong>
-    @php($path = ['superadmin/organization/dashboard/*','superadmin/organization/users/*','superadmin/family-accounts/dashboard/*','superadmin/family-accounts/users'])
+    @php($path = ['superadmin/organization/dashboard/*','superadmin/organization/users/*','superadmin/family-accounts/dashboard/*','superadmin/family-accounts/users/*'])
     @if(show_navbar($path))
-{{--        {{dd(session('type'))}}--}}
-{{--        {{dd($path[3] == 'superadmin/family-accounts/users')}}--}}
         <nav class="at-navigation">
             <ul>
                 <li class="{{at_active('superadmin/organization/dashboard/*')}}">
-                    <a href="{{route('organization.dashboard',$organization->id)}}">
-                        <i class="icon-dashboard"></i>
-                        <span>dashboard</span>
-                    </a>
+
+                    @if(session('type') == 'family')
+                       <a href="{{route('family.accounts.dashboard',$family_account->id)}}">
+                          <i class="icon-dashboard"></i>
+                          <span>dashboard</span>
+                       </a>
+                    @elseif(session('type') == 'organization')
+                        <a href="{{route('organization.dashboard',$organization->id)}}">
+                            <i class="icon-dashboard"></i>
+                            <span>dashboard</span>
+                        </a>
+                     @endif
                 </li>
                 <li class="{{at_active('superadmin/organization/users')}}">
 
                     @if(session('type') == 'family')
-                        <a href=" {{route('family.accounts.users')}}"> <i class="icon-user"></i>
+                        <a href=" {{route('family.accounts.users',$family_account->id)}}"> <i class="icon-user"></i>
                             <span>users</span>
                         </a>
                     @elseif(session('type') == 'organization')

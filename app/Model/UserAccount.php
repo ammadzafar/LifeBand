@@ -5,7 +5,7 @@ namespace App\Model;
 use App\Traits\UuId;
 use Illuminate\Database\Eloquent\Model;
 
-class OrganizationUser extends Model
+class UserAccount extends Model
 {
     use UuId;
     protected $guarded = ['id'];

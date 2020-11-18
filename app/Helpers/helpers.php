@@ -50,3 +50,22 @@ if(!function_exists('show_navbar')){
         return call_user_func_array('Request::is', (array)$path)  ;
     }
 }
+if (!function_exists('check_id')) {
+
+    function check_id($id)
+    {
+        if (\App\Model\Organization::find($id))
+        {
+            $account_type = \App\Model\Organization::where('id',$id)->get();
+//            dd($account_type);
+            return $account_type;
+        }elseif(\App\Model\FamilyAccount::find($id)){
+
+            $account_type = \App\Model\FamilyAccount::where('id',$id)->get();
+//            dd($account_type);
+            return $account_type;
+        }
+        dd('nothing matched');
+
+    }
+}

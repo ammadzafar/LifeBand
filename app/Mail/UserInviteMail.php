@@ -29,6 +29,6 @@ class UserInviteMail extends Mailable
      */
     public function build()
     {
-        return $this->from('lifeband@gmail.com')->subject('New User Invite')->view('mail')->with('data',$this->data);
+        return $this->from('lifeband@gmail.com')->subject('New User Invite')->view('admin.email.user-email')->with('data',$this->data);
     }
 }

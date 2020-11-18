@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\OrganizationRequest;
 use App\Http\Requests\OrganizationUpdateRequest;
 use App\Model\Organization;
+use App\Model\OrganizationUser;
+use App\Model\UserAccount;
 use App\Services\Admin\AdminServices;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -33,10 +35,9 @@ class OrganizationController extends Controller
     {
         try {
             $organization = Organization::findorfail($id);
-//            dd($organization);
-            return view('admin.organization.users',compact('organization'));
-        }
-        catch(\Exception $e)
+            $users = UserAccount::where('account_id',$organization->id)->get();
+            return view('admin.organization.users',compact('organization','users'));
+        }catch(\Exception $e)
         {
             return redirect()->back()->with('error', error_details($e,'Something went wrong!'.$e->getMessage()));
         }

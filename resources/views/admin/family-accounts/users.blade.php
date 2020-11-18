@@ -320,315 +320,89 @@
                         </div>
                     </div>
                     <div class="at-usersholder">
-                        <div class="at-user">
-                            <a href="javascript: void(0);" class="at-sidebarbtn">
-                                <div class="at-userhead">
-                                    <div class="at-userimage">
-                                        <figure>
-                                            <img src="{{asset('asset/images/user.png')}}" alt="user image">
-                                        </figure>
-                                        <div class="at-username">
-                                            <h4>Stark Brown</h4>
-                                            <span>18763369</span>
+                        @if(count($users)>0)
+                            @foreach($users as $user)
+                                <div class="at-user">
+                                    <a href="javascript: void(0);" class="at-sidebarbtn">
+                                        <div class="at-userhead">
+                                            <div class="at-userimage">
+                                                <figure>
+                                                    <img src="{{asset('asset/images/user.png')}}" alt="user image">
+                                                </figure>
+                                                <div class="at-username">
+                                                    <h4>{{$user->first_name}}</h4>
+                                                    <span>18763369</span>
+                                                </div>
+                                            </div>
+                                            <div class="at-userstatus">
+                                                <em>status</em>
+                                                <span class="at-bggreentwo">active</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="at-userstatus">
-                                        <em>status</em>
-                                        <span class="at-bggreentwo">active</span>
-                                    </div>
-                                </div>
-                                <div class="at-userbodydetail">
-                                    <ul>
-                                        <li>
-                                            <i class="icon-heightpm"></i>
-                                            <div>
-                                                <em>171cm</em>
-                                                <span>height</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <i class="icon-weightmeter"></i>
-                                            <div>
-                                                <em>42kg</em>
-                                                <span>weight</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <i class="icon-target"></i>
-                                            <div>
-                                                <em>5000</em>
-                                                <span>target</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <i class="icon-handwatch"></i>
-                                            <div>
-                                                <em>right</em>
-                                                <span>hand</span>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="at-betterywarnings">
-                                    <ul class="at-warnings">
-                                        <li>
-                                            <figure>
-                                                <img src="{{asset('asset/images/warningimg.png')}}" alt="warnings image">
-                                            </figure>
-                                            <span>2 warnings</span>
-                                        </li>
-                                        <li>
-                                            <figure>
-                                                <img src="{{asset('asset/images/warningimg2.png')}}" alt="warnings image">
-                                            </figure>
-                                            <span>2 warnings</span>
-                                        </li>
-                                    </ul>
-                                    <div class="at-betterylevel">
-                                        <span>battery level</span>
-                                        <figure>
-                                            <img src="{{asset('asset/images/Group.svg')}}" alt="bettry img">
-                                            <span class="at-charge">
+                                        <div class="at-userbodydetail">
+                                            <ul>
+                                                <li>
+                                                    <i class="icon-heightpm"></i>
+                                                    <div>
+                                                        <em>171cm</em>
+                                                        <span>height</span>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <i class="icon-weightmeter"></i>
+                                                    <div>
+                                                        <em>42kg</em>
+                                                        <span>weight</span>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <i class="icon-target"></i>
+                                                    <div>
+                                                        <em>5000</em>
+                                                        <span>target</span>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <i class="icon-handwatch"></i>
+                                                    <div>
+                                                        <em>right</em>
+                                                        <span>hand</span>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="at-betterywarnings">
+                                            <ul class="at-warnings">
+                                                <li>
+                                                    <figure>
+                                                        <img src="{{asset('asset/images/warningimg.png')}}" alt="warnings image">
+                                                    </figure>
+                                                    <span>2 warnings</span>
+                                                </li>
+                                                <li>
+                                                    <figure>
+                                                        <img src="{{asset('asset/images/warningimg2.png')}}" alt="warnings image">
+                                                    </figure>
+                                                    <span>2 warnings</span>
+                                                </li>
+                                            </ul>
+                                            <div class="at-betterylevel">
+                                                <span>battery level</span>
+                                                <figure>
+                                                    <img src="{{asset('asset/images/Group.svg')}}" alt="bettry img">
+                                                    <span class="at-charge">
 													<span style="width: 75%;"></span>
 												</span>
-                                        </figure>
-                                        <em>75%</em>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="at-user">
-                            <a href="javascript: void(0);" class="at-sidebarbtn">
-                                <div class="at-userhead">
-                                    <div class="at-userimage">
-                                        <figure>
-                                            <img src="{{asset('asset/images/user.png')}}" alt="user image">
-                                        </figure>
-                                        <div class="at-username">
-                                            <h4>Stark Brown</h4>
-                                            <span>18763369</span>
+                                                </figure>
+                                                <em>75%</em>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="at-userstatus">
-                                        <em>status</em>
-                                        <span class="at-bgredtwo">non- active</span>
-                                    </div>
+                                    </a>
                                 </div>
-                                <div class="at-userbodydetail">
-                                    <ul>
-                                        <li>
-                                            <i class="icon-heightpm"></i>
-                                            <div>
-                                                <em>171cm</em>
-                                                <span>height</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <i class="icon-weightmeter"></i>
-                                            <div>
-                                                <em>42kg</em>
-                                                <span>weight</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <i class="icon-target"></i>
-                                            <div>
-                                                <em>5000</em>
-                                                <span>target</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <i class="icon-handwatch"></i>
-                                            <div>
-                                                <em>right</em>
-                                                <span>hand</span>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="at-betterywarnings">
-                                    <ul class="at-warnings">
-                                        <li>
-                                            <figure>
-                                                <img src="{{asset('asset/images/warningimg.png')}}" alt="warnings image">
-                                            </figure>
-                                            <span>2 warnings</span>
-                                        </li>
-                                        <li>
-                                            <figure>
-                                                <img src="{{asset('asset/images/warningimg2.png')}}" alt="warnings image">
-                                            </figure>
-                                            <span>2 warnings</span>
-                                        </li>
-                                    </ul>
-                                    <div class="at-betterylevel">
-                                        <span>battery level</span>
-                                        <figure>
-                                            <img src="{{asset('asset/images/Group.svg')}}" alt="bettry img">
-                                            <span class="at-charge">
-													<span style="width: 16%; background: #f21717;"></span>
-												</span>
-                                        </figure>
-                                        <em>16%</em>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="at-user">
-                            <a href="javascript: void(0);" class="at-sidebarbtn">
-                                <div class="at-userhead">
-                                    <div class="at-userimage">
-                                        <figure>
-                                            <img src="{{asset('asset/images/user2.png')}}" alt="user image">
-                                        </figure>
-                                        <div class="at-username">
-                                            <h4>Stark Brown</h4>
-                                            <span>18763369</span>
-                                        </div>
-                                    </div>
-                                    <div class="at-userstatus">
-                                        <em>status</em>
-                                        <span class="at-bggreentwo">active</span>
-                                    </div>
-                                </div>
-                                <div class="at-userbodydetail">
-                                    <ul>
-                                        <li>
-                                            <i class="icon-heightpm"></i>
-                                            <div>
-                                                <em>171cm</em>
-                                                <span>height</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <i class="icon-weightmeter"></i>
-                                            <div>
-                                                <em>42kg</em>
-                                                <span>weight</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <i class="icon-target"></i>
-                                            <div>
-                                                <em>5000</em>
-                                                <span>target</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <i class="icon-handwatch"></i>
-                                            <div>
-                                                <em>right</em>
-                                                <span>hand</span>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="at-betterywarnings">
-                                    <ul class="at-warnings">
-                                        <li>
-                                            <figure>
-                                                <img src="{{asset('asset/images/warningimg.png')}}" alt="warnings image">
-                                            </figure>
-                                            <span>2 warnings</span>
-                                        </li>
-                                        <li>
-                                            <figure>
-                                                <img src="{{asset('asset/images/warningimg2.png')}}" alt="warnings image">
-                                            </figure>
-                                            <span>2 warnings</span>
-                                        </li>
-                                    </ul>
-                                    <div class="at-betterylevel">
-                                        <span>battery level</span>
-                                        <figure>
-                                            <img src="{{asset('asset/images/Group.svg')}}" alt="bettry img">
-                                            <span class="at-charge">
-													<span style="width: 50%;"></span>
-												</span>
-                                        </figure>
-                                        <em>50%</em>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="at-user">
-                            <a href="javascript: void(0);" class="at-sidebarbtn">
-                                <div class="at-userhead">
-                                    <div class="at-userimage">
-                                        <figure>
-                                            <img src="{{asset('asset/images/user3.png')}}" alt="user image">
-                                        </figure>
-                                        <div class="at-username">
-                                            <h4>Stark Brown</h4>
-                                            <span>18763369</span>
-                                        </div>
-                                    </div>
-                                    <div class="at-userstatus">
-                                        <em>status</em>
-                                        <span class="at-bggreentwo">active</span>
-                                    </div>
-                                </div>
-                                <div class="at-userbodydetail">
-                                    <ul>
-                                        <li>
-                                            <i class="icon-heightpm"></i>
-                                            <div>
-                                                <em>171cm</em>
-                                                <span>height</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <i class="icon-weightmeter"></i>
-                                            <div>
-                                                <em>42kg</em>
-                                                <span>weight</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <i class="icon-target"></i>
-                                            <div>
-                                                <em>5000</em>
-                                                <span>target</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <i class="icon-handwatch"></i>
-                                            <div>
-                                                <em>right</em>
-                                                <span>hand</span>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="at-betterywarnings">
-                                    <ul class="at-warnings">
-                                        <li>
-                                            <figure>
-                                                <img src="{{asset('asset/images/warningimg.png')}}" alt="warnings image">
-                                            </figure>
-                                            <span>2 warnings</span>
-                                        </li>
-                                        <li>
-                                            <figure>
-                                                <img src="{{asset('asset/images/warningimg2.png')}}" alt="warnings image">
-                                            </figure>
-                                            <span>2 warnings</span>
-                                        </li>
-                                    </ul>
-                                    <div class="at-betterylevel">
-                                        <span>battery level</span>
-                                        <figure>
-                                            <img src="{{asset('asset/images/batterycharge.png')}}" alt="bettry img">
-                                            <!-- <span class="at-charge">
-                                                <span style="width: 75%;"></span>
-                                            </span> -->
-                                        </figure>
-                                        <em>charging</em>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-
+                            @endforeach
+                        @else
+                            <h5>No User Created Yet</h5>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -645,7 +419,8 @@
             <div class="modal-content">
                 <div class="modal-body">
 
-                    <form class="at-modalform at-formtheme">
+                    <form class="at-modalform at-formtheme" action="{{route('organization.user.store.email')}}" method="post">
+                        @csrf
                         <fieldset>
                             <div class="at-modaltitle">
                                 <span>tiger aviation</span>
@@ -658,7 +433,8 @@
                                 <label>enter email id</label>
                                 <div class="at-inputsendinvite">
                                     <input type="text" name="email" placeholder="John.er@systech.com">
-                                    <a href="javascritp: void(0);" class="at-btn at-bggreen" data-toggle="modal" data-target="#exampleModalCentervtwo">send invite</a>
+                                    <input type="hidden" name="account_id" value="{{$family_account->id}}">
+                                    <button type="submit" class="at-btn at-bggreen" {{--data-toggle="modal" data-target="#exampleModalCentervtwo"--}}>send invite</button>
                                 </div>
                             </div>
                         </fieldset>
@@ -685,7 +461,7 @@
                         <div class="at-description">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore gorisns sdlsiowe djjjdows ssakaqi asdse.</p>
                         </div>
-                        <a href="javascritp: void(0);" class="at-btn at-bggreen"  data-toggle="modal" data-target="#exampleModalCentervfour">continue</a>
+                        <a href="javascritp: void(0);" class="at-btn at-bggreen"  {{--data-toggle="modal" data-target="#exampleModalCentervfour"--}}>continue</a>
                     </div>
                 </div>
             </div>
