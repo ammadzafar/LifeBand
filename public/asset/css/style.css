@@ -3263,7 +3263,7 @@ address { font-style: italic; }
     font-weight: 700;
     line-height: 16px;
 }
-.at-reportusers .at-radio input[type=radio] + label:before{
+.at-reportusers .at-checkbox input[type=checkbox] + label:before{
 	top: 50%;
     left: auto;
     right: 14px;
@@ -3282,9 +3282,9 @@ address { font-style: italic; }
     -o-transform: translateY(-50%);
     transform: translateY(-50%);
 }
-.at-reportusers .at-radio label{padding: 0;}
-.at-reportusers .at-radio input[type=radio]:checked + label:before {
-	background: #4b9b7a url(images/Check.svg) no-repeat;
+.at-reportusers .at-checkbox label{padding: 0;}
+.at-reportusers .at-checkbox input[type=checkbox]:checked + label:before {
+	background: #4b9b7a url(../images/Check.svg) no-repeat;
 	background-position: center;
 }
 .at-btnaddgroup img{

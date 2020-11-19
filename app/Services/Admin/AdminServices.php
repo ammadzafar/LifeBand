@@ -27,12 +27,12 @@ class AdminServices
 
         $organization->save();
     }
-    public function Edit($id)
-    {
-        $organization = Organization::findorfail($id);
-//        dd($organization);
-        return view('admin.organization.modal',compact('organization'));
-    }
+//    public function Edit($id)
+//    {
+//        $organization = Organization::findorfail($id);
+////        dd($organization);
+//        return view('admin.organization.modal',compact('organization'));
+//    }
     public function update($request,$id)
     {
         $update_organization = Organization::findorfail($id);

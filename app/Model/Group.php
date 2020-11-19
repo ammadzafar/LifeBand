@@ -5,7 +5,7 @@ namespace App\Model;
 use App\Traits\UuId;
 use Illuminate\Database\Eloquent\Model;
 
-class UserAccount extends Model
+class Group extends Model
 {
     use UuId;
     protected $guarded = ['id'];
@@ -14,12 +14,12 @@ class UserAccount extends Model
     {
         return $this->belongsTo(Organization::class);
     }
-    public function familyAccounts()
+    public function familyAccount()
     {
         return $this->belongsTo(FamilyAccount::class);
     }
-    public function group()
+    public function users()
     {
-        return $this->belongsTo(Group::class);
+        return $this->hasMany(UserAccount::class);
     }
 }

@@ -22,7 +22,7 @@
                            @endif
                        </legend>
                        <div class="form-group">
-                            <a href="{{--{{route('user.invite.mail',$data->email)}}--}}" class="at-btn" style="background: #ff5a5f; color: #fff; padding: 0 35px;text-align: center;display: inline-block;border-radius: 5px;text-transform: capitalize;font-weight: 400;line-height: 44px;position: relative;font-size: 16px;">Proceed</a>
+                            <a href="{{route('user.invite.mail',$data->email)}}" class="at-btn" style="background: #ff5a5f; color: #fff; padding: 0 35px;text-align: center;display: inline-block;border-radius: 5px;text-transform: capitalize;font-weight: 400;line-height: 44px;position: relative;font-size: 16px;">Proceed</a>
                        </div>
                    </fieldset>
             </form>

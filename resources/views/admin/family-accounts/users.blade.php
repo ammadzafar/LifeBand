@@ -419,7 +419,7 @@
             <div class="modal-content">
                 <div class="modal-body">
 
-                    <form class="at-modalform at-formtheme" action="{{route('organization.user.store.email')}}" method="post">
+                    <form class="at-modalform at-formtheme" action="{{route('user.store.email')}}" method="post">
                         @csrf
                         <fieldset>
                             <div class="at-modaltitle">

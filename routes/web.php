@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/email', function () {
-    return view('admin.email.user-email');
-});
+//Route::get('/email', function () {
+//    return view('admin.organization.group');
+//})->name('users.group');
 
 
                  /*===========  Main Routes  =========== */
@@ -35,13 +35,19 @@ Route::group(['middleware'=>['admin','auth'],'prefix'=>'superadmin'],function ()
         Route::delete('/delete/{id}','Admin\OrganizationController@organizationDelete')->name('organization.delete');
                  /*=========== Organizations Users  =========== */
         Route::get('/users/{id}','Admin\OrganizationController@userIndex')->name('organization.users');
-                 /*=========== Organizations Users Group =========== */
-        Route::get('/users/group','Admin\OrganizationController@groupIndex')->name('organization.users.group');
-                /*=========== Organizations Users Invite =========== */
-        Route::post('store/email','Admin\MailController@store')->name('organization.user.store.email');
 
-        Route::get('/user/invite/{email}','Admin\UsersAccountController@create')->name('user.invite.mail');
-        Route::post('/store/inivited/users','Admin\UsersAccountController@store')->name('store.invited.users');
+
+    });
+                    /*=========== Users Groups  =========== */
+    Route::group(['prefix'=>'group','namespace'=>'Admin'],function (){
+        Route::get('/create','GroupController@create')->name('users.group.create');
+        Route::post('/store','GroupController@store')->name('users.group.store');
+    });
+                    /*=========== Invite Users =========== */
+    Route::group(['/prefix'=>'user-accounts','namespace'=>'Admin'],function (){
+        Route::post('store/email','MailController@store')->name('user.store.email');
+        Route::get('/invite/{email}','UsersAccountController@create')->name('user.invite.mail');
+        Route::post('/store','UsersAccountController@store')->name('store.invited.users');
     });
 
                 /*=========== Family Accounts =========== */

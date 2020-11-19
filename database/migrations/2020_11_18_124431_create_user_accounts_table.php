@@ -16,6 +16,7 @@ class CreateUserAccountsTable extends Migration
         Schema::create('user_accounts', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('account_id');
+            $table->uuid('group_id')->nullable();
             $table->string('first_name');
             $table->string('last_name');
             $table->string('gender');

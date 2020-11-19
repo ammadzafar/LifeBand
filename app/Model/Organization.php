@@ -14,4 +14,8 @@ class Organization extends Model
     {
         return $this->hasMany(UserAccount::class);
     }
+    public function organizationGroup()
+    {
+        return $this->hasMany(Group::class);
+    }
 }

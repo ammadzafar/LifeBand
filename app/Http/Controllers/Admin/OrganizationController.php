@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\OrganizationRequest;
 use App\Http\Requests\OrganizationUpdateRequest;
 use App\Model\Organization;
-use App\Model\OrganizationUser;
 use App\Model\UserAccount;
 use App\Services\Admin\AdminServices;
 use Illuminate\Http\Request;
@@ -42,16 +41,6 @@ class OrganizationController extends Controller
             return redirect()->back()->with('error', error_details($e,'Something went wrong!'.$e->getMessage()));
         }
     }
-    public function groupIndex()
-    {
-        try {
-            return view('admin.organization.group');
-        }
-        catch(\Exception $e)
-        {
-            return redirect()->back()->with('error', error_details($e,'Something went wrong!'.$e->getMessage()));
-        }
-    }
     public function organizationStore(OrganizationRequest $request)
     {
         try {
@@ -65,7 +54,9 @@ class OrganizationController extends Controller
     }
     public function organizationEdit($id)
     {
-            return $this->organization->Edit($id);
+        $organization = Organization::findorfail($id);
+//        dd($organization);
+        return view('admin.organization.modal',compact('organization'));
     }
     public function organizationUpdate(OrganizationUpdateRequest $request,$id)
     {

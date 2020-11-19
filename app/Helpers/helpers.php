@@ -66,6 +66,14 @@ if (!function_exists('check_id')) {
             return $account_type;
         }
         dd('nothing matched');
+    }
+}
+if (!function_exists('group_users')) {
+
+    function group_users()
+    {
+        return \App\Model\UserAccount::where('group_id','=',null)->get();
 
     }
+
 }
