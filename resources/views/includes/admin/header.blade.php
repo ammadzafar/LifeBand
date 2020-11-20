@@ -15,7 +15,7 @@
 
         <a href="{{route('home.index')}}"><img src="{{asset('asset/images/logo.png')}}" alt="logo image"></a>
     </strong>
-    @php($path = ['superadmin/organization/dashboard/*','superadmin/organization/users/*','superadmin/family-accounts/dashboard/*','superadmin/family-accounts/users/*'])
+    @php($path = ['superadmin/organization/dashboard/*','superadmin/organization/users/*','superadmin/family-accounts/dashboard/*','superadmin/family-accounts/users/*'/*,'superadmin/group/create/*'*/])
     @if(show_navbar($path))
         <nav class="at-navigation">
             <ul>

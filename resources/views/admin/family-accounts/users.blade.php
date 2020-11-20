@@ -292,7 +292,7 @@
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModalCentervfive">create group</a>
-                                            <a class="dropdown-item" href="{{route('organization.users.group')}}">view group</a>
+                                            <a class="dropdown-item" href="{{route('users.group.create',['id'=>$family_account->id])}}">view group</a>
                                         </div>
                                     </div>
                                 </li>
@@ -418,7 +418,6 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-
                     <form class="at-modalform at-formtheme" action="{{route('user.store.email')}}" method="post">
                         @csrf
                         <fieldset>
@@ -439,7 +438,6 @@
                             </div>
                         </fieldset>
                     </form>
-
                 </div>
             </div>
         </div>
@@ -660,83 +658,45 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-                    <form class="at-modalform at-formtheme at-userinfoform">
+                    <form class="at-modalform at-formtheme at-userinfoform" action="{{route('users.group.store')}}" method="post" enctype="multipart/form-data">
+                        @csrf
                         <fieldset>
                             <div class="at-modaltitle">
                                 <h3>Add Group</h3>
                             </div>
                             <div class="form-group">
                                 <label>group name</label>
-                                <input type="text" name="first name" placeholder="John">
+                                <input type="text" name="name" placeholder="John">
+                                <input type="hidden" name="account_id" value="{{$family_account->id}}">
                             </div>
                             <div class="at-uploadimg">
                                 <div class="form-group">
-                                    <input type="file" name="uploadlogo" id="at-uploadlogo">
+                                    <input type="file" name="image" id="at-uploadlogo">
                                     <label for="at-uploadlogo">
                                         <i class="icon-upload"></i>
+                                        <img class="group-image" src="" alt="">
                                         <span>Drop or upload logo</span>
                                     </label>
                                 </div>
                             </div>
                             <ul class="at-reportusers">
-                                <li>
-									<span class="at-radio">
-										<input type="radio" name="report-user" id="at-usersix">
-										<label for="at-usersix">
+                                @php( $group_users = family_account($family_account->id))
+                                @foreach($group_users as $user)
+                                    <li>
+									<span class="at-checkbox">
+										<input type="checkbox" name="user_id[]" value="{{$user->id}}" id="at-usersix {{$user->first_name}}">
+										<label for="at-usersix {{$user->first_name}}">
 											<figure>
 												<img src="{{asset('asset/images/user.png')}}" alt="User Image">
 											</figure>
-											<h3>Susan May</h3>
+											<h3>{{$user->first_name}}</h3>
 										</label>
 									</span>
-                                </li>
-                                <li>
-									<span class="at-radio">
-										<input type="radio" name="report-user1" id="at-userseven">
-										<label for="at-userseven">
-											<figure>
-												<img src="{{asset('asset/images/user.png')}}" alt="User Image">
-											</figure>
-											<h3>Susan May</h3>
-										</label>
-									</span>
-                                </li>
-                                <li>
-									<span class="at-radio">
-										<input type="radio" name="report-user2" id="at-usereight">
-										<label for="at-usereight">
-											<figure>
-												<img src="{{asset('asset/images/user.png')}}" alt="User Image">
-											</figure>
-											<h3>Susan May</h3>
-										</label>
-									</span>
-                                </li>
-                                <li>
-									<span class="at-radio">
-										<input type="radio" name="report-user3" id="at-usernine">
-										<label for="at-usernine">
-											<figure>
-												<img src="{{asset('asset/images/user.png')}}" alt="User Image">
-											</figure>
-											<h3>Susan May</h3>
-										</label>
-									</span>
-                                </li>
-                                <li>
-									<span class="at-radio">
-										<input type="radio" name="report-user4" id="at-userten">
-										<label for="at-userten">
-											<figure>
-												<img src="{{asset('asset/images/user.png')}}" alt="User Image">
-											</figure>
-											<h3>Susan May</h3>
-										</label>
-									</span>
-                                </li>
+                                    </li>
+                                @endforeach
                             </ul>
                             <div class="form-group">
-                                <a href="user.html" class="at-btn at-bggreen">submit</a>
+                                <button type="submit" class="at-btn at-bggreen">submit</button>
                             </div>
                         </fieldset>
                     </form>

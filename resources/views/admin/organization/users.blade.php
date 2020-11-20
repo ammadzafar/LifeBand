@@ -292,7 +292,7 @@
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModalCentervfive">create group</a>
-                                            <a class="dropdown-item" href="{{route('users.group.create')}}">view group</a>
+                                            <a class="dropdown-item" href="{{route('users.group.create',['id'=>$organization->id])}}">view group</a>
                                         </div>
                                     </div>
                                 </li>
@@ -418,7 +418,6 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-
                     <form class="at-modalform at-formtheme" action="{{route('user.store.email')}}" method="post">
                         @csrf
                         <fieldset>
@@ -439,7 +438,6 @@
                             </div>
                         </fieldset>
                     </form>
-
                 </div>
             </div>
         </div>
@@ -659,31 +657,31 @@
     <div class="modal fade at-modaltheme at-userinfomodal at-addgroupmodal" id="exampleModalCentervfive" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <div class="modal-body">
-                    <form class="at-modalform at-formtheme at-userinfoform" action="{{route('users.group.store')}}" method="post" enctype="multipart/form-data">
-                        @csrf
-                        <fieldset>
-                            <div class="at-modaltitle">
-                                <h3>Add Group</h3>
-                            </div>
+                <form class="at-modalform at-formtheme at-userinfoform" action="{{route('users.group.store')}}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <fieldset>
+                        <div class="at-modaltitle">
+                            <h3>Add Group</h3>
+                        </div>
+                        <div class="form-group">
+                            <label>group name</label>
+                            <input class="group-name" type="text" name="name" placeholder="John">
+                            <input type="hidden" name="account_id" value="{{$organization->id}}">
+                        </div>
+                        <div class="at-uploadimg">
                             <div class="form-group">
-                                <label>group name</label>
-                                <input type="text" name="name" placeholder="John">
-                                <input type="hidden" name="account_id" value="{{$organization->id}}">
+                                <input type="file" name="image" id="at-uploadlogo">
+                                <label for="at-uploadlogo">
+                                    <i class="icon-upload"></i>
+                                    <img class="group-image" src="" alt="">
+                                    <span>Drop or upload logo</span>
+                                </label>
                             </div>
-                            <div class="at-uploadimg">
-                                <div class="form-group">
-                                    <input type="file" name="image" id="at-uploadlogo">
-                                    <label for="at-uploadlogo">
-                                        <i class="icon-upload"></i>
-                                        <img class="group-image" src="" alt="">
-                                        <span>Drop or upload logo</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <ul class="at-reportusers">
-                                @php( $group_users = group_users())
-                                @foreach($group_users as $user)
+                        </div>
+                        <ul class="at-reportusers">
+                            @php( $group_users = group_users($organization->id))
+                            {{--                 {{dd($group_users)}}--}}
+                            @foreach($group_users as $user)
                                 <li>
 									<span class="at-checkbox">
 										<input type="checkbox" name="user_id[]" value="{{$user->id}}" id="at-usersix {{$user->first_name}}">
@@ -695,14 +693,13 @@
 										</label>
 									</span>
                                 </li>
-                                    @endforeach
-                            </ul>
-                            <div class="form-group">
-                                <button type="submit" class="at-btn at-bggreen">submit</button>
-                            </div>
-                        </fieldset>
-                    </form>
-                </div>
+                            @endforeach
+                        </ul>
+                        <div class="form-group">
+                            <button type="submit" class="at-btn at-bggreen">submit</button>
+                        </div>
+                    </fieldset>
+                </form>
             </div>
         </div>
     </div>

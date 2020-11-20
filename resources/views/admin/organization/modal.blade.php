@@ -3,12 +3,12 @@
 	*************************************-->
 
     @if(!empty($organization))
-    <form name="myForm" class="at-modalform at-formtheme" action="{{route('organization.update',['id'=>$organization->id])}}" method="post" enctype="multipart/form-data">
-        @csrf
-        @method('PUT')
-        @else
-    <form name="myForm" class="at-modalform at-formtheme" action="{{route('organization.store')}}" method="post" enctype="multipart/form-data">
-    @csrf
+      <form name="myForm" class="at-modalform at-formtheme" action="{{route('organization.update',['id'=>$organization->id])}}" method="post" enctype="multipart/form-data">
+         @csrf
+         @method('PUT')
+    @else
+      <form name="myForm" class="at-modalform at-formtheme" action="{{route('organization.store')}}" method="post" enctype="multipart/form-data">
+         @csrf
     @endif
     <fieldset>
         <div class="at-uploadimg">

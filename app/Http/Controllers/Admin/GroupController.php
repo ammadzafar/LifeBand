@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Model\Group;
 use App\Services\Admin\GroupServices;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -14,9 +15,11 @@ class GroupController extends Controller
         $this->group = $group;
     }
 
-    public function create()
+    public function create($id)
     {
-        return view('admin.organization.group');
+        $group_users = Group::where('account_id',$id)->get();
+//        dd($group_users);
+        return view('admin.organization.group',compact('group_users'));
     }
     public function store(Request $request)
     {
@@ -28,6 +31,12 @@ class GroupController extends Controller
         }catch(Exception $e){
             return redirect()->back()->with('error',error_details($e,'something went wrong!'.$e->getMessage()));
         }
+    }
+    public function edit($id)
+    {
+        $group = Group::findorfail($id);
+//        dd($group->account_id);
+        return view('admin.organization.group-modal',compact('group'));
     }
 
 }

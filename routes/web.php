@@ -40,8 +40,9 @@ Route::group(['middleware'=>['admin','auth'],'prefix'=>'superadmin'],function ()
     });
                     /*=========== Users Groups  =========== */
     Route::group(['prefix'=>'group','namespace'=>'Admin'],function (){
-        Route::get('/create','GroupController@create')->name('users.group.create');
+        Route::get('/create/{id}','GroupController@create')->name('users.group.create');
         Route::post('/store','GroupController@store')->name('users.group.store');
+        Route::get('/edit/{id}','GroupController@edit')->name('users.group.edit');
     });
                     /*=========== Invite Users =========== */
     Route::group(['/prefix'=>'user-accounts','namespace'=>'Admin'],function (){
