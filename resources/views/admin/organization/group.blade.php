@@ -58,9 +58,11 @@
                                     <a href="javascript: void(0);" class="pen-icon" data-id="{{$user->id}}" {{--data-toggle="modal" data-target="#exampleModalCentervfive"--}}>
                                         <i class="icon-pen"></i>
                                     </a>
-                                    <a href="javascript: void(0);">
-                                        <i class="icon-trash"></i>
-                                    </a>
+                                    <form action="{{route('users.group.delete',['id'=>$user->id])}}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" ><i class="icon-trash"></i></button>
+                                    </form>
                                 </div>
                             </td>
                             <td>

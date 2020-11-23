@@ -2,9 +2,10 @@
 <!--************************************
 		   Group Modal Start
 	*************************************-->
-{{--    {{dd($group->account_id)}}--}}
-    <form class="at-modalform at-formtheme at-userinfoform" action="{{route('users.group.store')}}" method="post" enctype="multipart/form-data">
+{{--    {{dd($group->id)}}--}}
+    <form class="at-modalform at-formtheme at-userinfoform" action="{{route('users.group.update',['id'=>$group->id])}}" method="post" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
         <fieldset>
             <div class="at-modaltitle">
                 <h3>Add Group</h3>
@@ -30,19 +31,18 @@
                 </div>
             </div>
             <ul class="at-reportusers">
-                @php( $group_users = group_all_users($group->account_id,$group->id))
-{{--                 {{dd($group_users)}}--}}
                 @foreach($group_users as $user)
+{{--                    {{dd($user->group_id)}}--}}
                     <li>
-									<span class="at-checkbox">
-										<input type="checkbox" name="user_id[]" value="{{$user->id}}" id="at-usersix {{$user->first_name}}">
-										<label for="at-usersix {{$user->first_name}}">
-											<figure>
-												<img src="{{asset('asset/images/user.png')}}" alt="User Image">
-											</figure>
-											<h3>{{$user->first_name}}</h3>
-										</label>
-									</span>
+                        <span class="at-checkbox">
+                            <input type="checkbox" name="user_id[]" value="{{$user->id}}" id="at-usersix {{$user->first_name}}"  {{$user->group_id == $group->id ? 'checked' : ''}}  >
+                            <label for="at-usersix {{$user->first_name}}">
+                                <figure>
+                                    <img src="{{asset('asset/images/user.png')}}" alt="User Image">
+                                </figure>
+                                <h3>{{$user->first_name}}</h3>
+                            </label>
+                        </span>
                     </li>
                 @endforeach
             </ul>

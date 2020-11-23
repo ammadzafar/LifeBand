@@ -43,6 +43,8 @@ Route::group(['middleware'=>['admin','auth'],'prefix'=>'superadmin'],function ()
         Route::get('/create/{id}','GroupController@create')->name('users.group.create');
         Route::post('/store','GroupController@store')->name('users.group.store');
         Route::get('/edit/{id}','GroupController@edit')->name('users.group.edit');
+        Route::put('/update/{id}','GroupController@update')->name('users.group.update');
+        Route::delete('/delete/{id}','GroupController@delete')->name('users.group.delete');
     });
                     /*=========== Invite Users =========== */
     Route::group(['/prefix'=>'user-accounts','namespace'=>'Admin'],function (){

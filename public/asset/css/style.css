@@ -2694,6 +2694,14 @@ address { font-style: italic; }
 	height: auto;
 	display: block;
 }
+.at-responsetable tbody tr td form button{
+    color: #ff0000;
+    font-size: 26px;
+    line-height: 30px;
+    background: none;
+    outline: none;
+}
+.at-responsetable tbody tr td form{float: right}
 .at-responsetable tbody tr td a{
 	font-size: 26px;
 	color: #4b9b7a;

@@ -83,10 +83,3 @@ if (!function_exists('family_account')) {
         return \App\Model\UserAccount::where('account_id',$id)->where('group_id','=',null)->get();
     }
 }
-if (!function_exists('group_all_users')) {
-
-    function group_all_users($id,$group_id)
-    {
-        return \App\Model\UserAccount::where('account_id',$id)->where('group_id',$group_id)->orWhere('group_id','=',null)->get();
-    }
-}

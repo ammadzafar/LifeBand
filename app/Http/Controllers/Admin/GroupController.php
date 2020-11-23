@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Model\Group;
+use App\Model\UserAccount;
 use App\Services\Admin\GroupServices;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -34,9 +35,34 @@ class GroupController extends Controller
     }
     public function edit($id)
     {
-        $group = Group::findorfail($id);
-//        dd($group->account_id);
-        return view('admin.organization.group-modal',compact('group'));
-    }
+        try {
+             $group = Group::findorfail($id);
+             $group_users = UserAccount::where('group_id',$id)->orWhere('group_id','=',null)->get();
+//             dd($group_users);
+            return view('admin.organization.group-modal',compact('group','group_users'));
+//            return redirect()->back()->with('success','Group Created Successfully');
 
+        }catch(Exception $e){
+            return redirect()->back()->with('error',error_details($e,'something went wrong!'.$e->getMessage()));
+        }
+    }
+    public function update(Request $request,$id)
+    {
+        try {
+            $this->group->update($request, $id);
+            return redirect()->back()->with('success', 'Group updated Successfully');
+        } catch (Exception $e) {
+            return redirect()->back()->with('error', error_details($e, 'something went wrong!' . $e->getMessage()));
+        }
+    }
+    public function delete($id)
+    {
+//        dd($id);
+        try {
+            $this->group->delete($id);
+            return redirect()->back()->with('success', 'Group deleted Successfully');
+        } catch (Exception $e) {
+            return redirect()->back()->with('error', error_details($e, 'something went wrong!' . $e->getMessage()));
+        }
+    }
 }
